@@ -94,8 +94,10 @@ func (c *Client) Parse(req *MessageRequest) (*MessageResponse, error) {
 	defer resp.Close()
 
 	var msgResp *MessageResponse
-	decoder := json.NewDecoder(resp)
-	err = decoder.Decode(&msgResp)
+  bytes, err := io.ReadAll(resp)
+  fmt.Println("Response", string(bytes))
+	// decoder := json.NewDecoder(resp)
+	// err = decoder.Decode(&msgResp)
 	return msgResp, err
 }
 
