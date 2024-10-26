@@ -30,7 +30,7 @@ type MessageEntity struct {
 	Body       string                 `json:"body"`
 	Value      string                 `json:"value"`
 	Confidence float64                `json:"confidence"`
-	Entities   []MessageEntity        `json:"entities"`
+	Entities   interface{}            `json:"entities"`
 	Extra      map[string]interface{} `json:"-"`
 }
 
@@ -94,10 +94,8 @@ func (c *Client) Parse(req *MessageRequest) (*MessageResponse, error) {
 	defer resp.Close()
 
 	var msgResp *MessageResponse
-  bytes, err := io.ReadAll(resp)
-  fmt.Println("Response", string(bytes))
-	// decoder := json.NewDecoder(resp)
-	// err = decoder.Decode(&msgResp)
+	decoder := json.NewDecoder(resp)
+	err = decoder.Decode(&msgResp)
 	return msgResp, err
 }
 
