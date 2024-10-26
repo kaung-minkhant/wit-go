@@ -1,3 +1,3 @@
-module github.com/kaung-minkhant/wit-go/v2
+module github.com/kaung-minkhant/wit-go/v1
 
 go 1.22
