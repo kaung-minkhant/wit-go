@@ -30,7 +30,7 @@ type MessageEntity struct {
 	Body       string                 `json:"body"`
 	Value      string                 `json:"value"`
 	Confidence float64                `json:"confidence"`
-	Entities   []MessageEntity        `json:"entities"`
+	Entities   interface{}            `json:"entities"`
 	Extra      map[string]interface{} `json:"-"`
 }
 
